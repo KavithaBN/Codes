@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div ng-app="" ng-controller="mainPage">
+	<nav class="navbar-inverse navbar-fixed-top">
+	<div class="container">
+	<div class="navbar-header">
+	<a class="nav navbar-nav navbar-form" href="#">
+		<img alt="Logo" src="../logo1.jpg" width="120" style="margin-left:-110px">
+	</a>
+	</div>
+	<ul class="nav navbar-nav navbar-form">
+		
+		<li class="active">
+			<a href="/userDetails" ng-click="home()">Home</a>
+		</li>
+		  <li class="active">
+			<a href="/about" ng-click="home()">About</a>
+		</li>
+
+  <li class="active"><a href="/Friends" ng-click="home()">Friends</a></li>
+    <li class="active"><a href="/interest" ng-click="home()">Interest</a></li>
+  <li class="active"><a href="/Groups" ng-click="home()">Groups</a></li>  
+	</ul>
+	<form class="navbar-form navbar-right" role="searchPeople" style="margin-right: -110px;">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search for people" ng-model="searchPerson">
+		</div>
+		<button type="submit" class="btn btn-default navbar-btn" ng-click="search()">
+		<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		<button type="submit" class="btn btn-default navbar-btn" ng-click="signOut()">Sign Out</button>
+	</form>
+	</div><!-- /.container-fluid -->
+	</nav>
+	<br>
+	<div class="row jumbotron">
+	<div class="col-md-2">
+      <img src="../background3.jpg" alt="..." style="border-radius:100px;width:200px;height:200px">
+	</div>
+	<div class="col-md-4">
+      <h2>Welcome to Facebook,<h3>Kavitha</h3></h2>
+     
+	</div>
+	
+</div>
+</div>
+
+<form class="form-horizontal" role="form">
+ <div class="col-sm-10">
+ <h2><b>News Feed </b></h2>
+  <br>
+    <div class="input-group">
+     
+        <table border="1" cellpadding="7" cellspacing="7">
+                <tr>
+                  <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>City</th>
+                    <th>Sex</th>
+                    <th>Company</th>
+                    <th>Education</th>
+                    <th width="120px">Phone Number</th>
+                    <th>Life Event</th>
+                    <th>Life Event Date</th>
+                </tr>
+<% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>                 
+                <tr>
+                    <td><%=(i+1)%></td>
+			<td><%=data[i].firstname%></td>
+                    <td><%=data[i].lastname%></td>
+                    <td><%=data[i].city%></td>
+                    <td><%=data[i].sex%></td>
+                    <td><%=data[i].company%></td>
+                    <td><%=data[i].education%></td>
+                    <td><%=data[i].phoneno%></td>
+                    <td><%=data[i].life_event%></td>
+                    <td><%=data[i].life_event_date%></td>
+                </tr>
+            <% }
+  			
+    
+     </table>
+     </div>
+     
+      <br>
+      <div class="input-group">
+      Interest
+        <table border="1" cellpadding="7" cellspacing="7">
+                <tr>
+                  
+                    <th>Favorite Music</th>
+                    <th>Favorite Shows</th>
+                    <th>Favorite Sports</th>
+                    <th>Favorite Movies</th>
+                    
+                </tr>
+  		<% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>                 
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].music%></td>
+                    <td><%=data[i].shows%></td>
+                    <td><%=data[i].sports%></td>
+                    <td><%=data[i].movies%></td>
+                </tr>
+            <% }
+
+               
+    
+     </table>
+      <br>
+                <br>
+                <br>
+                
+     </div>
+     </div>
+
+
+</div>
+
+
+</body>
+</html>

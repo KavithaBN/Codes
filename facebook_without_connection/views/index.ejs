@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form action = "/checkuser"> 
+	<div ng-app="" ng-controller="mainPage">
+<nav class="navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-header" href="#">
+		<img alt="Logo" src="../logo1.jpg" width="150">
+	</a> 
+	</div></div>
+	<br>
+	 <div class="col-sm-1">
+		<img alt="Background" src="../background1.jpg" width="1360" height="560" style="margin-left:-10px">
+	</div>
+
+	
+ <form class="form-horizontal" role="form">
+    <div  class="col-sm-4">
+        <input type="email" name = "email" id = "email" class="form-control" placeholder="Email Address">
+             <br>
+        <input type="password" name = "pwd" id = "pwd" class="form-control" placeholder="Password"><br>
+    </div>
+    <br>
+    <div  class="col-sm-4">
+        <button type="submit" class="btn btn-default">Sign In</button>
+       <button type="submit" class="btn btn-default">Sign Up</button>
+       </div>
+     </form>
+ </nav> </div>
+  
+</body>
+</html>

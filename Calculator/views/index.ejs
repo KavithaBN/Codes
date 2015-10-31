@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css'/>
+		<link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	</head>
+ <body>
+		<div ng-app="" ng-controller="calController" class="panel panel-primary" style="max-width: 470px;">
+		<p><div class="panel-heading"><div class="text-center">Calculator</div></div></p>
+			<form class="form-inline" id="Form">
+				<p>
+					&nbsp&nbsp&nbsp<input type="number" class="form-control" ng-model="num1" placeholder="Enter First Number">
+					&nbsp&nbsp&nbsp<input type="number" class="form-control" ng-model="num2" placeholder="Enter Second Number">
+				</p>
+				&nbsp&nbsp&nbspSelect the operation: <select class="form-control" ng-model="oper" name="operator">
+					<option value="Choose">Choose</option>
+					<option value="Addition">Addition</option>
+					<option value="Subtraction">Subtraction</option>
+					<option value="Multiplication">Multiplication</option>
+					<option value="Division">Division</option>
+				</select>
+  				<p>&nbsp&nbsp&nbsp<button type="button" class="btn btn-success" ng-click="calculate()">Compute</button></p>
+				<fieldset disabled>
+					&nbsp&nbsp&nbsp<input type="text" class="form-control" placeholder="Undefined" ng-model="result">
+				</fieldset>
+				<br><p><button type="button" class="btn btn-link" ng-click="refresh()">Reset</button></p>
+				
+			</form>
+		</div>
+	<script>
+	function calController($scope,$http,$location){
+		$scope.oper="Choose";
+		$scope.calculate = function(){
+	    	$http({
+	            method: 'POST',
+	            url: '/calculator',
+	            data: {"num1": $scope.num1, "num2": $scope.num2, "oper": $scope.oper}
+	         }).success(function(response){
+	         	$scope.result = response.result;
+	         	if (response.result == "Error") {
+	         		alert(response.error);
+	         	}
+			});
+		};
+		$scope.refresh = function(){
+			$scope.oper="Choose";
+			$scope.num1 = "";
+			$scope.num2 = "";
+			$scope.result="result";
+		};
+	}
+	</script>
+	</body>
+</html>

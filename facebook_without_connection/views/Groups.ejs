@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div ng-app="" ng-controller="mainPage">
+	<nav class="navbar-inverse navbar-fixed-top">
+	<div class="container">
+	<div class="navbar-header">
+	<a class="nav navbar-nav navbar-form" href="#">
+		<img alt="Logo" src="../public/images/logo1.jpg" width="120" style="margin-left:-110px">
+	</a>
+	</div>
+<ul class="nav navbar-nav navbar-form">
+		
+		<li >
+			<a href="#" ng-click="home()">Home</a>
+		</li>
+		  <li class="active">
+			<a href="/about" ng-click="home()">About</a>
+		</li>
+
+  <li class="active"><a href="/Friends" ng-click="home()">Friends</a></li>
+    <li class="active"><a href="/interest" ng-click="home()">Interest</a></li>
+  <li class="active"><a href="/Groups" ng-click="home()">Groups</a></li>  
+	</ul>
+	<form class="navbar-form navbar-right" role="searchPeople" style="margin-right: -110px;">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search for people" ng-model="searchPerson">
+		</div>
+		<button type="submit" class="btn btn-default navbar-btn" ng-click="search()">
+		<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		<button type="submit" class="btn btn-default navbar-btn" ng-click="signOut()">Sign Out</button>
+	</form>
+	</div><!-- /.container-fluid -->
+	</nav>
+	<br>
+	<div class="row jumbotron">
+	<div class="col-md-2">
+      <img src="../public/images/background3.jpg" alt="..." style="border-radius:100px;width:200px;height:200px">
+	</div>
+	<div class="col-md-4">
+     <h3>Kavitha</h3>
+     
+	</div>
+	
+</div>
+</div>
+<div>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="/groups">Groups</a></li>
+    </ul>
+</div>
+<br>
+<form class="navbar-form navbar-right">
+<div>
+<button type="submit" class="btn btn-default navbar-btn" ng-click="creategroup()">Create Group</button>
+<button type="submit" class="btn btn-default navbar-btn" ng-click="deletegroup()">Delete Group</button>
+
+</div>
+ 
+</form>
+<div class="input-group">
+     
+        <table border="1" cellpadding="7" cellspacing="7">
+                <tr>
+                  
+                    <th>Group Name</th>
+                    <th>Group Description</th>
+                    <th>Action</th>
+                    
+                </tr>
+                
+                <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>                 
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].group_name%></td>
+                   ` <td><%=data[i].group_desc%></td>
+                   
+                    <td>
+                        <a class="a-inside edit" href="../groups/edit/<%=data[i].id%>">Delete Group</a>                       
+                        <a class="a-inside delete" href="../groups/delete/<%=data[i].id%>">Edit Group</a>                       
+                    </td>
+                </tr>
+            <% }
+            
+  			   
+    
+     </table>
+     </div>
+
+</body>
+</html>
